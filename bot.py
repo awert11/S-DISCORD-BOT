@@ -1,6 +1,6 @@
 BOT_PREFIX = "-"
 BOT_TOKEN = "YOUR_BOT_TOKEN"
-CHANNEL_ID = 975396795729461388 
+CHANNEL_ID = YOUR CHANNEL ID 
 
 from cgitb import text
 import datetime
