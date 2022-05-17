@@ -7,7 +7,10 @@ V2版本更新
 -user @用戶 - 查詢用戶資料  
 -clear 數字 - 刪除訊息功能(需有權限mange.message)  
 -sayd 文字 - 代公告系統(需有權限mange.message)  
+<<<<<<< HEAD
 
 *使用注意事項*  
 需修改處 setting.json 中的TOKEN，與CHANNEL_ID  
 還有bot.py中 給予身分組的地方 把權限組名改成你想要的(YOUR_ROLE_NAME)  
+=======
+>>>>>>> 030c49388c31ea4ddd378d41253d094eebbc9ccd
