@@ -1,2 +1,4 @@
-# S-DISCORD-BOT
-第一次製作機器人
+# Ma_Bot
+A Discord Bot
+
+我的處女作品 寫得不好請見諒><
