@@ -20,10 +20,6 @@ async def on_ready():
     activity_w = discord.Activity(type=discord.ActivityType.playing, name="✏️| 開發By: Mauna")
     await bot.change_presence(status= status_w, activity=activity_w)
     print("機器人已啟動!!", bot.user.name)
-    Channel = bot.get_channel(int(jdata["GIVE_ROLE_CHANNEL"]))
-    text = "🙋 各位客官 伺服器現正封測中🙋\n如果想要及時獲得封測更新訊息，請點擊下方表情符號獲得【遊客】身分！"
-    Moji = await Channel.send(text)
-    await Moji.add_reaction('🏃')
 
 @bot.event
 async def on_member_join(member):
@@ -64,22 +60,23 @@ async def on_member_remove(member):
         raise e
 
 @bot.event
-async def on_reaction_add(reaction, user):
-    Channel = bot.get_channel(int(jdata["GIVE_ROLE_CHANNEL"]))
-    if reaction.message.channel.id != Channel.id:
-        return
-    if reaction.emoji == "🏃":
-      Role = discord.utils.get(user.guild.roles, name="YOU_ROLE_NAME")
-      await user.add_roles(Role)
+async def on_raw_reaction_add(data):
+    if data.message_id == MESSAGE_ID:
+       if str(data.emoji) == "✅":
+          guild = bot.get_guild(data.guild_id)
+          role = guild.get_role(ROLE_ID)
+          await data.member.add_roles(role)
+          await data.member.send(f"⚡ 你取得了 `{role}` 身分組!")  
 
 @bot.event
-async def on_reaction_remove(reaction, user):
-    Channel = bot.get_channel(int(jdata["GIVE_ROLE_CHANNEL"]))
-    if reaction.message.channel.id != Channel.id:
-        return
-    if reaction.emoji == "🏃":
-      Role = discord.utils.get(user.guild.roles, name="YOU_ROLE_NAME")
-      await user.remove_roles(Role) 
+async def on_raw_reaction_remove(data):
+    if data.message_id == MESSAGE_ID:
+       if str(data.emoji) == "✅":
+          guild = bot.get_guild(data.guild_id)
+          user = guild.get_member(data.user_id)
+          role = guild.get_role(ROLE_ID)
+          await user.remove_roles(role)
+          await user.send(f"⚡ 你移除了 `{role}` 身分組!")  
 
 @bot.command()
 @commands.has_permissions(manage_messages=True)
