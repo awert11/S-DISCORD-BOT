@@ -11,5 +11,3 @@ V2版本更新
 *使用注意事項  
 需修改處 setting.json 中的TOKEN，與CHANNEL_ID  
 還有bot.py中 給予身分組的地方 把權限組名改成你想要的(YOUR_ROLE_NAME)  
-
-TEST TEXT
