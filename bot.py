@@ -69,7 +69,7 @@ async def on_reaction_add(reaction, user):
     if reaction.message.channel.id != Channel.id:
         return
     if reaction.emoji == "🏃":
-      Role = discord.utils.get(user.guild.roles, name="我愛你")
+      Role = discord.utils.get(user.guild.roles, name="YOU_ROLE_NAME")
       await user.add_roles(Role)
 
 @bot.event
@@ -78,7 +78,7 @@ async def on_reaction_remove(reaction, user):
     if reaction.message.channel.id != Channel.id:
         return
     if reaction.emoji == "🏃":
-      Role = discord.utils.get(user.guild.roles, name="我愛你")
+      Role = discord.utils.get(user.guild.roles, name="YOU_ROLE_NAME")
       await user.remove_roles(Role) 
 
 @bot.command()
